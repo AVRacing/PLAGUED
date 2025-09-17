@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root {
+    --black: #111;
+    --green: #00ff41;
+    --red: #ff2222;
+    --white: #f4f4f4;
+    --gray: #232323;
+    --shadow: 0 2px 12px rgba(0,0,0,0.25);
+    --transition: 0.3s ease;
+}
+
+/* Body & General */
+body {
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--black) 60%, var(--green) 100%);
+    color: var(--white);
+    min-height: 100vh;
+    animation: bg-move 25s linear infinite alternate;
+}
+@keyframes bg-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 100vw 100vh; }
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, var(--black) 70%, var(--green) 100%);
+    padding: 2.5rem 1rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+header h1 {
+    font-size: 3.5rem;
+    letter-spacing: 0.18em;
+    margin: 0;
+    color: var(--green);
+    text-shadow: 0 0 12px var(--red), 0 2px 8px var(--black);
+    animation: glitch 2.5s infinite linear alternate-reverse;
+}
+@keyframes glitch {
+    0% { text-shadow: 2px 0 var(--red), -2px 0 var(--green); }
+    20% { text-shadow: -2px 0 var(--red), 2px 0 var(--green); }
+    40% { text-shadow: 2px 2px var(--red), -2px -2px var(--green); }
+    60% { text-shadow: 0 0 var(--red), 0 0 var(--green); }
+    80% { text-shadow: 2px -2px var(--red), -2px 2 var(--green); }
+    100% { text-shadow: -2px 2 var(--red), 2px -2 var(--green); }
+}
+header p {
+    margin: 0.5rem 0 0;
+    font-size: 1.1rem;
+    opacity: 0.85;
+}
+
+/* Navigation */
+nav {
+    background: var(--gray);
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+nav a {
+    color: var(--green);
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-weight: bold;
+    font-size: 1.15rem;
+    position: relative;
+    transition: color var(--transition);
+}
+nav a::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--green), var(--red));
+    border-radius: 2px;
+    transition: width var(--transition);
+    margin: 0 auto;
+}
+nav a:hover {
+    color: var(--red);
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Main Content */
+main {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2.5rem 2rem;
+    background: rgba(20,20,20,0.95);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    animation: fadein 1.2s ease-out;
+}
+@keyframes fadein {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+section {
+    margin-bottom: 2.5rem;
+}
+h2 {
+    color: var(--green);
+    font-size: 2rem;
+    margin-top: 0;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 8px var(--black);
+    animation: flicker 2.5s infinite alternate;
+}
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    45% { opacity: 0.85; }
+    50% { opacity: 0.7; }
+    55% { opacity: 0.85; }
+}
+
+/* Download Section */
+.download-section {
+    background: linear-gradient(120deg, var(--black) 80%, var(--red) 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    padding: 2rem 1.5rem;
+    margin: 2rem 0;
+}
+.download-section h2 {
+    color: var(--red);
+    font-size: 2.2rem;
+    text-shadow: 0 0 8px var(--green), 0 2px 8px var(--black);
+    margin-bottom: 1.2rem;
+}
+.download-section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--red));
+    margin: 0.5rem auto 1rem;
+    border-radius: 2px;
+}
+.download-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+.download-image-slot {
+    flex: 1;
+    min-width: 220px;
+    max-width: 320px;
+    perspective: 900px;
+    text-align: center;
+}
+.download-image-slot img {
+    max-width: 100%;
+    border: 5px solid var(--green);
+    border-radius: 12px;
+    box-shadow: 0 10px 32px rgba(0,255,65,0.15), 0 2px 12px var(--black);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.download-image-slot img:hover {
+    transform: rotateY(8deg) scale(1.07);
+    box-shadow: 0 16px 48px var(--red), 0 2px 12px var(--black);
+}
+.download-text {
+    flex: 2;
+    min-width: 260px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    padding: 1.2rem;
+    color: var(--white);
+}
+.download-text p {
+    margin-bottom: 1rem;
+}
+.action-buttons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.download-button {
+    padding: 0.9em 2em;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.15em;
+    text-decoration: none;
+    color: var(--black);
+    background: linear-gradient(90deg, var(--green) 60%, var(--red) 100%);
+    box-shadow: 0 4px 16px var(--green), 0 2px 8px var(--black);
+    transition: all var(--transition);
+}
+.download-button:hover {
+    background: linear-gradient(90deg, var(--red) 60%, var(--green) 100%);
+    color: var(--white);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Donation Box */
+.donation-box {
+    background: rgba(255,34,34,0.08);
+    border: 2px solid var(--red);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    max-width: 260px;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.donation-box:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 24px var(--red);
+}
+.donation-box p {
+    margin: 0 0 0.5em;
+    font-weight: 600;
+    color: var(--red);
+}
+.donation-link {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 700;
+}
+.donation-link:hover {
+    color: var(--white);
+    text-shadow: 0 0 8px var(--green);
+}
+
+/* Characters */
+#characters ul {
+    list-style: none;
+    padding-left: 0;
+}
+#characters li {
+    margin-bottom: 0.7em;
+    padding-left: 1.2em;
+    position: relative;
+}
+#characters li::before {
+    content: '•';
+    color: var(--red);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Excerpt */
+blockquote {
+    border-left: 5px solid var(--green);
+    background: rgba(0,255,65,0.07);
+    padding: 1.2em 1.5em;
+    border-radius: 8px;
+    font-style: italic;
+    color: var(--green);
+    font-size: 1.15em;
+}
+
+/* Contact */
+#contact a {
+    color: var(--green);
+    text-decoration: underline;
+}
+#contact a:hover {
+    color: var(--red);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.2rem 0;
+    background: var(--gray);
+    color: #888;
+    font-size: 1rem;
+    border-top: 2px solid var(--green);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    main { padding: 1rem; }
+    .download-content { flex-direction: column; gap: 1.5rem; }
+}
+@media (max-width: 600px) {
+    header h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.5rem; }
+    .download-section h2 { font-size: 1.5rem; }
+}
